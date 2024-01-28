@@ -6,7 +6,7 @@ import {createClient} from '@supabase/supabase-js'
 import {SessionContextProvider} from "@supabase/auth-helpers-react"
 
 const supabase = createClient(
-    "https://lcbgjjbrqnftnmqjidbg.supabase.co",
+    process.env.REACT_APP_SUPABASE_URL,
     process.env.REACT_APP_SUPABASE_KEY
 )
 
