@@ -28,23 +28,23 @@ export const useCalendar = () => {
 
     function convertDateToISO(dateString, timeRangeString) {
         const months = {
-            'Января': 0,
-            'Февраля': 1,
-            'Марта': 2,
-            'Апреля': 3,
-            'Мая': 4,
-            'Июня': 5,
-            'Июля': 6,
-            'Августа': 7,
-            'Сентября': 8,
-            'Октября': 9,
-            'Ноября': 10,
-            'Декабря': 11
+            'ЯНВАРЯ': 0,
+            'ФЕВРАЛЯ': 1,
+            'МАРТА': 2,
+            'АПРЕЛЯ': 3,
+            'МАЯ': 4,
+            'ИЮНЯ': 5,
+            'ИЮЛЯ': 6,
+            'АВГУСТА': 7,
+            'СЕНТЯБРЯ': 8,
+            'ОКТЯБРЯ': 9,
+            'НОЯБРЯ': 10,
+            'ДЕКАБРЯ': 11
         };
 
         const parts = dateString.split(' ');
         const day = parseInt(parts[0], 10);
-        const month = months[parts[1]];
+        const month = months[parts[1].toUpperCase()];
         const year = parseInt(parts[2], 10);
 
         const timeRangeParts = timeRangeString.match(/\d+/g);
