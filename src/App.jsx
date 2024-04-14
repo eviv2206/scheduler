@@ -35,7 +35,7 @@ function App() {
                     <>
                         <h2>Hey there {session.user.email}</h2>
                         <button onClick={() => signOut()}>Sign out</button>
-                        <Excel fileTypes={['.xslx', '.xls']}/>
+                        <Excel fileTypes={['.xlsx', '.xls']}/>
                     </>
                     :
                     <>
