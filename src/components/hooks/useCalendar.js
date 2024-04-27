@@ -1,13 +1,17 @@
 export const useCalendar = () => {
     async function createEvents(events, token, calendarId) {
         events.forEach((day) => {
-            day.classes.forEach(async (event) => await fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events`, {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                },
-                body: JSON.stringify(transformData(event, day.date))
-            }));
+            day.classes.forEach(async (event) => {
+                if (event.subject !== '') {
+                    await fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events`, {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                        },
+                        body: JSON.stringify(transformData(event, day.date))
+                    })
+                }
+            });
         })
 
     }
