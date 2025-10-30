@@ -1,19 +1,50 @@
+import { useState } from "react";
+
 export const useCalendar = () => {
+    const [status, setStatus] = useState('idle'); // 'idle', 'loading', 'success', 'error'
+    const [error, setError] = useState(null);
+
     async function createEvents(events, token, calendarId) {
+        setStatus('loading');
+        setError(null);
+
+        const promises = [];
         events.forEach((day) => {
-            day.classes.forEach(async (event) => {
+            day.classes.forEach((event) => {
                 if (event.subject !== '') {
-                    await fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events`, {
+                    const fetchPromise = fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events`, {
                         method: "POST",
                         headers: {
                             "Authorization": `Bearer ${token}`,
                         },
                         body: JSON.stringify(transformData(event, day.date))
                     })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Ошибка Google API: ${response.statusText}`);
+                        }
+                        return response.json();
+                    });
+                    
+                    promises.push(fetchPromise);
                 }
             });
-        })
+        });
 
+        // 6. Выполняем все запросы параллельно и ждем их завершения
+        try {
+            await Promise.all(promises);
+            setStatus('success');
+        } catch (err) {
+            setError(err.message);
+            setStatus('error');
+        }
+    }
+
+    // 9. Функция для сброса состояния (например, при загрузке нового файла)
+    function resetStatus() {
+        setStatus('idle');
+        setError(null);
     }
 
     function transformData(event, date) {
@@ -66,7 +97,10 @@ export const useCalendar = () => {
         }
     }
 
-    return {
+return {
         createEvents,
+        status,
+        error,
+        resetStatus,
     }
 }

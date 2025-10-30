@@ -1,0 +1,156 @@
+.excelWrapper {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.controls {
+    /* ❗️❗️ ВОТ КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ ❗️❗️ */
+    /* 1. Заставляем .controls занять 100% ширины родителя (.content-wrapper) */
+    width: 100%; 
+
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: center;
+    justify-content: center; 
+    transition: justify-content 0.4s ease;
+}
+
+.excelWrapper.scheduleVisible {
+    .controls {
+        justify-content: flex-start;
+    }
+}
+
+/* ❗️ 2. СТИЛИ ДЛЯ <label> (КОНТЕЙНЕР) */
+.fileInputLabel {
+    display: inline-block; /* Простой блочный элемент */
+    
+    padding: 10px 18px;
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+    color: #444;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    
+    /* ❗️ 3. ВСЕ СТИЛИ ДЛЯ ТЕКСТА ЗДЕСЬ (на самом <label>) */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    /* ❗️ 4. УПРАВЛЕНИЕ РАЗМЕРОМ */
+    /* Теперь 100% означает 100% от .controls (который 100% от 500px) */
+    max-width: 100%; 
+    
+    /* ❗️ 5. Box-sizing на случай, если padding вытолкнет его */
+    box-sizing: border-box; 
+    
+    /* ❗️ 6. Выравнивание с другими кнопками */
+    vertical-align: middle;
+
+    &:not(:disabled):hover {
+        background-color: #e6e6e6;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+}
+
+/* ❗️ 7. УДАЛЯЕМ ВСЕ СТИЛИ ДЛЯ <span> */
+.fileInputLabel span {
+   /* Этот селектор больше не нужен, стили на родителе */
+}
+
+
+/* Базовый стиль кнопки .btn */
+.btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    background-color: #4285F4;
+    color: white;
+    
+    /* ❗️ 8. Добавляем это и сюда для согласованности */
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    box-sizing: border-box;
+
+    &:not(:disabled):hover {
+        background-color: #357ae8;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &:disabled {
+        background-color: #ccc;
+        color: #888;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+.btnCalendar {
+    background-color: #0F9D58; // Google Green
+
+    &:not(:disabled):hover {
+        background-color: #0c7e46;
+    }
+}
+
+.statusContainer {
+    width: 100%;
+    margin-top: -10px; /* Немного приподнимем, чтобы было ближе к кнопкам */
+    margin-bottom: 20px;
+    /* Выравнивание текста будет унаследовано (center или left) 
+       в зависимости от класса .scheduleVisible */
+}
+
+.statusMessage {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin: 0;
+}
+
+/* Зеленое сообщение */
+.success {
+    background-color: #e6f7ec;
+    color: #0F9D58;
+    border: 1px solid #b7e9c9;
+}
+
+/* Красное сообщение */
+.error {
+    background-color: #fdebee;
+    color: #d93025;
+    border: 1px solid #f7c9c5;
+}
+
+
+/* Адаптация */
+@media (max-width: 950px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch; /* Оставляем stretch для мобильных */
+    }
+
+    /* На мобильных .fileInputLabel и .btn уже 
+       растянутся на 100% из-за align-items: stretch.
+       Их max-width: 100% не даст им сломать верстку,
+       если имя файла будет ОЧЕНЬ длинным.
+    */
+}

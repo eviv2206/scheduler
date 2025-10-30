@@ -1,5 +1,185 @@
+/* Глобальные стили и лейаут */
 .App {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  background-color: #f0f2f5;
+}
+
+/* Состояние загрузки */
+.App-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.5rem;
+  color: #555;
+}
+
+/* Шапка */
+.App-header {
+  background-color: #ffffff;
+  padding: 15px 30px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #ddd;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #1a1a1a;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info span {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Основной контент */
+.App-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* "Карточки" для контента и логина */
+.login-container,
+.content-wrapper {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 30px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   width: 100%;
-  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+
+  /* Плавный переход ширины */
+  transition: max-width 0.4s ease-in-out, width 0.4s ease-in-out;
+}
+
+/* Контейнер логина - всегда узкий */
+.login-container {
+  max-width: 500px;
+}
+
+/* По умолчанию .content-wrapper УЗКИЙ */
+.content-wrapper {
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Этот класс добавляется из App.js, когда isScheduleVisible = true */
+.content-wrapper.schedule-visible-state {
+  max-width: 90vw;
+  /* Ширина 90% от экрана */
+  width: 90vw;
+  text-align: left;
+}
+
+
+/* Стили кнопок (для шапки и логина) */
+.btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: #4285F4;
+  color: white;
+  margin-top: 15px;
+}
+
+.btn-primary:hover {
+  background-color: #357ae8;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #444;
+  border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+  background-color: #e6e6e6;
+}
+
+ .google-signin-btn {
+    display: inline-flex;
+    align-items: center;
+    /* 2. Центрируем иконку и текст по вертикали */
+    justify-content: center;
+    /* 3. Центрируем по горизонтали */
+    gap: 12px;
+    /* 4. Пробел между иконкой и текстом */
+  }
+
+  /* Стили для самого SVG-логотипа */
+  .google-logo {
+    /* Маленький белый фон, чтобы логотип было видно на синей кнопке */
+    background-color: #ffffff;
+    padding: 2px;
+    border-radius: 50%;
+    width: 18px;
+    /* Фиксируем размер иконки */
+    height: 18px;
+  }
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 950px) {
+  .App-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .user-info {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .login-container,
+  .content-wrapper {
+    padding: 25px 20px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .content-wrapper.schedule-visible-state {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .btn {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }

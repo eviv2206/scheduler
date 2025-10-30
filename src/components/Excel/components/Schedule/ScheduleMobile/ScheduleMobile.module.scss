@@ -1,0 +1,78 @@
+.scheduleMobile {
+    width: 100%;
+}
+
+.scheduleMobile h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    color: #333;
+    text-align: center;
+}
+
+.dayList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dayCard {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+}
+
+.dayHeader {
+    background-color: #f9f9f9;
+    padding: 12px 15px;
+    margin: 0;
+    font-size: 1.1rem;
+    color: #444;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.classList {
+    display: flex;
+    flex-direction: column;
+}
+
+.classItem {
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.classTime {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1a1a1a;
+    width: 80px;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.classDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.classSubject {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+}
+
+.classMeta {
+    font-size: 0.9rem;
+    color: #666;
+    display: block;
+}
