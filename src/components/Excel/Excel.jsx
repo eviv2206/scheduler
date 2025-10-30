@@ -38,7 +38,6 @@ const Excel = ({ fileTypes, setIsScheduleVisible }) => {
         return () => {
             setIsScheduleVisible(false);
             setIsCurrentlyVisible(false);
-            resetStatus(); // Сбрасываем статус при очистке
         }
     }, [schedule, setIsScheduleVisible, resetStatus]);
 

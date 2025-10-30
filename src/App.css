@@ -130,26 +130,35 @@
   background-color: #e6e6e6;
 }
 
- .google-signin-btn {
-    display: inline-flex;
-    align-items: center;
-    /* 2. Центрируем иконку и текст по вертикали */
-    justify-content: center;
-    /* 3. Центрируем по горизонтали */
-    gap: 12px;
-    /* 4. Пробел между иконкой и текстом */
-  }
+.btn-exit {
+  background-color: #f0f0f0;
+  color: white;
+}
 
-  /* Стили для самого SVG-логотипа */
-  .google-logo {
-    /* Маленький белый фон, чтобы логотип было видно на синей кнопке */
-    background-color: #ffffff;
-    padding: 2px;
-    border-radius: 50%;
-    width: 18px;
-    /* Фиксируем размер иконки */
-    height: 18px;
-  }
+.btn-exit:hover {
+  background-color: #ff4646;
+}
+
+.google-signin-btn {
+  display: inline-flex;
+  align-items: center;
+  /* 2. Центрируем иконку и текст по вертикали */
+  justify-content: center;
+  /* 3. Центрируем по горизонтали */
+  gap: 12px;
+  /* 4. Пробел между иконкой и текстом */
+}
+
+/* Стили для самого SVG-логотипа */
+.google-logo {
+  /* Маленький белый фон, чтобы логотип было видно на синей кнопке */
+  background-color: #ffffff;
+  padding: 2px;
+  border-radius: 50%;
+  width: 18px;
+  /* Фиксируем размер иконки */
+  height: 18px;
+}
 
 /* Адаптация под мобильные устройства */
 @media (max-width: 950px) {

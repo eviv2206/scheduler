@@ -42,9 +42,9 @@ function App() {
                 <h1>Scheduler 2.0</h1>
                 {session && session.expires_at > Math.floor(Date.now() / 1000) && (
                     <div className="user-info">
-                        <span>Hey, {session.user.email}</span>
-                        <button onClick={signOut} className="btn btn-secondary">
-                            Sign out
+                        <span>Привет, {session.user.email}</span>
+                        <button onClick={signOut} className="btn btn-exit">
+                            Выйти
                         </button>
                     </div>
                 )}
