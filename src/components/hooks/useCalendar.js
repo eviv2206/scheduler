@@ -19,9 +19,10 @@ export const useCalendar = () => {
                         },
                         body: JSON.stringify(transformData(event, day.date))
                     })
-                    .then(response => {
+                    .then(async response => {
                         if (!response.ok) {
-                            throw new Error(`Ошибка Google API: ${response.statusText}`);
+                            const { error } = await response.json();
+                            throw new Error(`Ошибка Google API: ${error.message}`);
                         }
                         return response.json();
                     });
